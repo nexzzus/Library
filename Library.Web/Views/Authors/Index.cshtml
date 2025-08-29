@@ -1,0 +1,39 @@
+﻿@model List<AuthorDTO>?
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Autores";
+}
+
+<!DOCTYPE html>
+
+<html lang="utf-8">
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    
+    <a class="btn btn-primary" asp-action="Create">Nuevo Autor</a>
+    
+    <table class="table table-bordered mt-3">
+        <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (AuthorDTO author in Model)
+        {
+            <tr>
+                <td>@author.FirstName</td>
+                <td>@author.LastName</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+C:\C#\Library\Library.Share\bin\Debug\net8.0\Library.Share.exe
+C:\C#\Library\Library.Share\bin\Debug\net8.0\Library.Share.deps.json
+C:\C#\Library\Library.Share\bin\Debug\net8.0\Library.Share.runtimeconfig.json
+C:\C#\Library\Library.Share\bin\Debug\net8.0\Library.Share.dll
+C:\C#\Library\Library.Share\bin\Debug\net8.0\Library.Share.pdb
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.AssemblyInfoInputs.cache
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.AssemblyInfo.cs
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.csproj.CoreCompileInputs.cache
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.dll
+C:\C#\Library\Library.Share\obj\Debug\net8.0\refint\Library.Share.dll
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.pdb
+C:\C#\Library\Library.Share\obj\Debug\net8.0\Library.Share.genruntimeconfig.cache
+C:\C#\Library\Library.Share\obj\Debug\net8.0\ref\Library.Share.dll
