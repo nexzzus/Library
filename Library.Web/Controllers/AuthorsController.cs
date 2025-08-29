@@ -42,4 +42,10 @@ public class AuthorsController : Controller
         }
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        
+    }
 }
