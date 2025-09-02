@@ -74,4 +74,111 @@ public class AuthorsService : IAuthorsService
             };
         }
     }
+
+    public async Task<Response<AuthorDTO>> EditAuthorAsync(AuthorDTO dto)
+    {
+        try
+        {
+            Author? author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == dto.Id);
+            if (author is null)
+            {
+                return new Response<AuthorDTO>()
+                {
+                    Succeded = false,
+                    Message = $"El autor con id '{dto.Id}' no existe."
+                };
+            }
+            author.FirstName = dto.FirstName;
+            author.LastName = dto.LastName;
+            
+            _context.Authors.Update(author);
+            await _context.SaveChangesAsync();
+            
+            return new Response<AuthorDTO>()
+            {
+                Succeded = true,
+                Message = "Autor actualizado con éxito",
+                Result = dto
+            };
+        }
+        catch (Exception e)
+        {
+            return new Response<AuthorDTO>()
+            {
+                Succeded = false,
+                Message = e.Message
+            };
+        }
+    }
+
+    public async Task<Response<object>> DeleteAuthorAsync(Guid id)
+    {
+        try
+        {
+            Author? author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == id);
+            if (author is null)
+            {
+                return new Response<object>()
+                {
+                    Succeded = false,
+                    Message = $"El autor con id '{id}' no existe."
+                };
+            }
+            
+            _context.Authors.Remove(author);
+            await _context.SaveChangesAsync();
+
+            return new Response<object>
+            {
+                Succeded = true,
+                Message = "Autor eliminado con éxito"
+            };
+        }
+        catch (Exception e)
+        {
+            return new Response<object>()
+            {
+                Succeded = false,
+                Message = e.Message
+            };
+        }
+    }
+    
+    public async Task<Response<AuthorDTO>> GetAuthorAsync(Guid id)
+    {
+        try
+        {
+            Author? author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == id);
+            if (author is null)
+            {
+                return new Response<AuthorDTO>()
+                {
+                    Succeded = false,
+                    Message = $"El autor con id '{id}' no existe."
+                };
+            }
+
+            AuthorDTO dto = new AuthorDTO
+            {
+                Id = author.Id,
+                FirstName = author.FirstName,
+                LastName = author.LastName
+            };
+            
+            return new Response<AuthorDTO>()
+            {
+                Succeded = true,
+                Message = "Autor obtenido con éxito",
+                Result = dto
+            };
+        }
+        catch (Exception e)
+        {
+            return new Response<AuthorDTO>()
+            {
+                Succeded = false,
+                Message = e.Message
+            };
+        }
+    }
 }

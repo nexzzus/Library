@@ -13,26 +13,60 @@
 </head>
 <body>
 <div>
-    
+
     <a class="btn btn-primary" asp-action="Create">Nuevo Autor</a>
-    
+
     <table class="table table-bordered mt-3">
         <thead>
         <tr>
             <th>Nombres</th>
             <th>Apellidos</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        @foreach (AuthorDTO author in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td>@author.FirstName</td>
-                <td>@author.LastName</td>
-            </tr>
+            @foreach (AuthorDTO author in Model)
+            {
+                <tr>
+                    <td>@author.FirstName</td>
+                    <td>@author.LastName</td>
+                    <td>
+                        <a class="btn btn-warning" asp-route-id="@author.Id" asp-action="Edit">Editar</a>
+                        <form asp-route-id="@author.Id" asp-action="Delete" style="display: contents">
+                            <button class="btn btn-danger btnDelete">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
         }
         </tbody>
     </table>
+
+    @section Scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $(".btnDelete").click(function (event) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: "¿Desea eliminar el autor?",
+                        text: "¡No podrá revertirlo!",
+                        icon: "question",
+                        showDenyButton: true,
+                        confirmButtonText: "Si, eliminar",
+                        denyButtonText: "No, cancelar"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const form = $(this).closest('form');
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        </script>
+    }
 
 </div>
 </body>

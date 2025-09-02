@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Library.Web.Data;
 using Library.Web.Services.Abstractions;
 using Library.Web.Services.Implementations;
@@ -17,6 +19,13 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IAuthorsService, AuthorsService>();
 //builder.Services.AddTransient<IAuthorsService, AuthorsService>();
 //builder.Services.AddSingleton<IAuthorsService, AuthorsService>();
+
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 5; 
+    config.IsDismissable = true; 
+    config.Position = NotyfPosition.BottomRight;
+});
 //----------------------------------------------------------------------------------------------
 var app = builder.Build();
 
@@ -38,5 +47,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+//----------------------------------------------------------------------------------------------
+
+app.UseNotyf();
+
+//----------------------------------------------------------------------------------------------
 
 app.Run();

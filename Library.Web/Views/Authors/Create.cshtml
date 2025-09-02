@@ -11,20 +11,22 @@
 <head>
 </head>
 <body>
-    <h2>Nuevo Autor</h2>
-    <form asp-action="Create" method="POST">
-        <div class="mb-3">
-            <label class="form-label" for="FirstName">Nombres</label>
-            <input type="text" class="form-control" id="FirstName" placeholder="Ingrese su nombre completo" asp-for="FirstName"/>
-            <span class="text-danger" asp-validation-for="FirstName"></span>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="LastName">Apellidos</label>
-            <input type="text" class="form-control" id="LastName" placeholder="Ingrese sus apellidos" asp-for="LastName"/>
-            <span class="text-danger" asp-validation-for="LastName"></span>
-        </div>
-        <button class="btn btn-primary" type="submit">Guardar</button>
-    </form>
+<h2>Nuevo Autor</h2>
+<form asp-action="Create" method="POST">
+    <div class="mb-3">
+        <label class="form-label" for="FirstName">Nombres</label>
+        <input type="text" class="form-control" id="FirstName" placeholder="Ingrese su nombre"
+               asp-for="FirstName"/>
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="LastName">Apellidos</label>
+        <input type="text" class="form-control" id="LastName" placeholder="Ingrese sus apellidos" asp-for="LastName"/>
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
+
 @section Scripts
 {
     @{

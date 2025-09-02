@@ -1,0 +1,62 @@
+﻿@model AuthorDTO?
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Editar Autor";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Editar Autor</title>
+</head>
+<body>
+
+<h2>Editar Autor</h2>
+<form asp-action="Edit" method="POST">
+    
+    <input type="hidden" asp-for="Id"/>
+    
+    <div class="mb-3">
+        <label class="form-label" for="FirstName">Nombres</label>
+        <input class="form-control" type="text" asp-for="FirstName" placeholder="Ingrese su nombre"/>
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="LastName">Apellidos</label>
+        <input class="form-control" type="text" asp-for="LastName" placeholder="Ingrese sus apellidos"/>
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+    <button class="btn btn-primary btnEdit" type="submit">Actualizar</button>
+    <a class="btn btn-primary" asp-action="Index">Cancelar</a>
+</form>
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+           $(".btnEdit").click(function(event) {
+               event.preventDefault();
+               Swal.fire({
+                   title: "¿Actualizar?",
+                   text: "Confirmar la actualización",
+                   icon: "question",
+                   showDenyButton: true,
+                   confirmButtonText: "Si, Actualizar",
+                   denyButtonText: "No, cancelar"
+               }).then((result) => {
+                   if (result.isConfirmed) {
+                       const form = $(this).closest('form');
+                       form.submit();
+                   }
+               });
+           });
+        });
+    </script>
+}
+
+</body>
+</html>
